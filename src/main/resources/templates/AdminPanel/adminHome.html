@@ -1,0 +1,195 @@
+﻿<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Library Managment System</title>
+    <meta name="description" content="Librarayproject">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+
+
+
+    <link rel="stylesheet" href="AdminStyles/assets/css/normalize.css">
+    <link rel="stylesheet" href="AdminStyles/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="AdminStyles/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="AdminStyles/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="AdminStyles/assets/css/flag-icon.min.css">
+    <link rel="stylesheet" href="AdminStyles/assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="AdminStyles/assets/scss/style.css">
+    <link href="AdminStyles/assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="AdminStyles/assets/css/bootstrap.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="AdminStyles/assets/css/Custom.css">
+    <link rel="stylesheet" href="CSS/searchbxbtn.css" />
+    <link rel="stylesheet" href="AdminStyles/Custom.css" />
+    <link rel="stylesheet" href="AdminStyles/bokscss.css" />
+
+ 
+
+</head>
+
+<body class="bg-flat-color-2">
+    <!-- Left Panel -->
+
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu"
+                    aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="#"><i class="menu-icon fa fa-dashboard fa-4x"></i>Admin Panel</a>
+                    </li>
+                    <h3 class="menu-title">Menus</h3>
+                     <li class="active">
+                      <a th:href="@{/AdminPanel}"><i class="menu-icon fa  fa-book"></i>View Books</a>
+
+                    </li>
+                       <li class="active">
+                      <a th:href="@{/Editadprofile}"><i class="menu-icon fa fa-pencil-square-o"></i>Edit Profile</a>
+
+                    </li>
+                   
+                    <li>
+                        <a th:href="@{/addBooks}"><i class="menu-icon fa fa-plus"></i>Add Books</a>
+                    </li>
+                     <li>
+                        <a th:href="@{/RemoveBooks}"><i class="menu-icon fa fa-minus"></i>Remove Books</a>
+                    </li>
+                     <li>
+                        <a th:href="@{/UpdateBook}"><i class="menu-icon fa fa-edit"></i>Update Books</a>
+                    </li>
+                    <li>
+                      <a th:href="@{/SignoutAdmin}"><i class="menu-icon fa fa-sign-out"></i>Sign out </a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+    </aside>
+
+    <!-- /#left-panel -->
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+        <form th:action="@{/SearchBooks}" method="post">
+            <div  class="box" style="margin-left:160px;">
+
+                <input class="searchtextbox" style="margin-top:70px;" type="search" placeholder="Search" name="searchbox" />
+                <button class="btnsearch" style="padding-left:5px;" type="submit" name="Search" id="btnlsearch">Search</button>
+
+            </div>
+        </form>
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+
+                  
+                </div>
+
+                <div class="col-sm-5">        
+                    <div class="user-area dropdown float-right">
+                                                    <i style="padding-right:10px;">Hello Admin</i>    
+
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="AdminStyles/images/imj.png" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                           <a th:href="@{/SignoutAdmin}"><i class="menu-icon fa fa-sign-out"></i>Sign out </a>
+                             
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </header>
+        <!-- /header -->
+        <!-- Header-->
+
+        <div id="nores" style="padding-top:100px; margin-left:470px;margin-top: -50px;font-size:35px;">
+            <label  class="badge badge-danger" style="margin-top:40px;" th:text="${nobooksfound}"></label>
+        </div>
+
+        <div >
+
+            <table>
+                <tr th:each="book, iStat :${AllAdminBooks}" style="display: inline-block;">
+                    <td>
+                        <img   class="setimage" th:src="${book.getBookImageLink()}" height="200" width="150"/>
+
+                        <form  th:action="@{/ViewBookDetails}" method="get">
+                            <input type="hidden"  th:value="${book.getId()}" name="viewdetailid">
+                            <a   style="display: table; margin-left:60px;"><button type="submit" class="setbtn btn btn-sm">View Details</button></a>
+                        </form>
+                    </td>
+                <tr/>
+
+            </table>
+
+        </div>
+    </div>
+
+
+
+    <!-- Right Panel -->
+    <script src="AdminStyles/assets/js/vendor/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="AdminStyles/assets/js/plugins.js"></script>
+    <script src="AdminStyles/assets/js/main.js"></script>
+
+
+    <script src="AdminStyles/assets/js/lib/chart-js/Chart.bundle.js"></script>
+    <script src="AdminStyles/assets/js/dashboard.js"></script>
+    <script src="AdminStyles/assets/js/widgets.js"></script>
+    <script src="AdminStyles/assets/js/lib/vector-map/jquery.vmap.js"></script>
+    <script src="AdminStyles/assets/js/lib/vector-map/jquery.vmap.min.js"></script>
+    <script src="AdminStyles/assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
+    <script src="AdminStyles/assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
+    <script type=AdminStyles/"text/javascript">
+        (function ($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
+
+
+    </script>
+
+</body>
+</html>

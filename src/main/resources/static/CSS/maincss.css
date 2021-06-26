@@ -1,0 +1,40 @@
+﻿body {
+    background: url("../images/gg.jfif");
+}
+
+tr {
+display: inline-block;
+}
+
+
+.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
+    color: white;
+    text-decoration: none !important;
+}
+
+#hid a:hover {
+    color: black;
+}
+
+
+
+.navbar-light .navbar-brand {
+    color: #ffffff;
+    text-decoration: none !important;
+}
+
+.footerlinks {
+    color: #ffffff;
+    text-decoration: none !important;
+}
+
+    .footerlinks:hover {
+        color: #ffd800;
+    }
+
+
+#footer1 {
+  
+    margin-top:10px;
+    background: #762b00;
+}

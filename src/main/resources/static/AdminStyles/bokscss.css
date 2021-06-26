@@ -1,0 +1,77 @@
+﻿
+.imagecontainer {
+    display: block;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding-top: 100px;
+}
+
+.setimage {
+      padding-top: 5px;
+           padding-bottom: 15px;
+           padding-left: 20px;
+           margin-left:50px;
+           margin-top:10px;
+}
+.setseaimg
+{
+    padding-top:0px;
+    padding-bottom:50px;
+}
+
+.setsearch {
+    float: left;
+    color: white;
+    padding-top: 10px;
+}
+
+.setlabel {
+    color: whitesmoke;
+    font-weight: bold;
+    display: table;
+    font-size: x-large;
+    margin-left: 25px;
+}
+
+.setbtn {
+    color:aliceblue;
+    background-color: #76001c;
+    font-size: medium;
+    margin-left: 25px;
+    padding-top: 0px;
+    margin-bottom: 10px;
+}
+.setbookdtails {
+    color:white;
+    font-weight: bold;
+    font-size: x-large;
+   text-align:center;
+   
+}
+.setdetimage {
+     padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 15px;
+}
+
+.bookinfo {
+    color: whitesmoke;
+    font-weight: bold;
+    display:block;
+    font-size:medium;
+    margin-bottom:7px;
+    word-spacing: 2px;;
+}
+.searchtextbox {
+    outline: 0;
+    background: #f2f2f2;
+    
+    border: 0;
+    border-radius: 50px;
+    font-size: 14px;
+}
+.btnsearch {
+    background-color: #76001c;
+    color: white;
+    border-radius: 50px;
+    font-size: 12px;
+}

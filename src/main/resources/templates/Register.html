@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head runat="server">
+    <link href="Bootsrap/Bootstrap-4-4.1.1/css/bootstrap.css" rel="stylesheet" />
+      <link href="CSS/Register.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body>
+<form id="form1" th:action="@{/Register}" method="post" th:object="${Registerobj}">
+        
+        <div class="form">
+            <div class="main">
+            <div id="section1">
+                 <h1>Create Account</h1>
+                <div class="img-cont">
+                    <img  src="images/icon.jpg" width="60" height="60" />
+                    </div>
+
+                <br />
+
+
+                <div class="name">
+                    <label class="firstname">First Name</label>
+			<input type="text" id="txtFName" th:field="*{FirstName}" required class="input1 col-lg-3">
+                   
+                    &nbsp&nbsp
+                          
+                     <label class="lastname">Last Name</label>
+		<input type="text" id="txtlname" required th:field="*{LastName}" class="input1 col-xl-3">
+                  
+
+                
+                </div>
+                <br />
+
+                <label class="name">UserName</label>
+		<input type="text" id="txtusername" required th:field="*{Username}" class="input1 col-lg-3">
+                
+                &nbsp&nbsp
+            <label class="name">Password</label>
+		<input type="password" id="txtPassword" required th:field="*{Password}"  class="input1 col-lg-3">
+               
+                
+                <br />
+                <br />
+             <label class="name">Email</label> &nbsp  &nbsp  &nbsp  &nbsp   
+		<input type="email" id="txtemail" required th:field="*{Email}"  class="input1 col-lg-3">
+             
+               <label class="name">Date of Birth</label> 
+		<input type="date" id="txtdob" required th:field="*{DOB}" class="input1">
+             
+                <br />
+                <br />
+
+                <br />
+
+              
+
+			<label class="name">Gender:&nbsp</label>
+			<input type="radio" required th:field="*{Gender}" id="male" name="gender" th:value="'male'">
+ 			 <label for="male" style="color:white;">Male</label>
+ 			 <input type="radio" required id="female" th:field="*{Gender}" name="gender" th:value="'female'">
+			  <label for="female" style="color:white;">Female</label><br>
+			 
+		
+
+            </div>
+
+            <div class="section2">
+
+                <small style="color:#d4edda;" th:styleappend="${setmargin}" th:text="${regmssg}" th:classappend="${flag} ? badge-success : badge-danger"  class="badge">Registered SuccessFully</small>
+
+            </div>
+
+            <div class="section5">
+              
+		<button class="Registerbtn" type="submit" id="btnforreg">Register</button>
+                <br />
+		</div>
+
+            <div>
+                <a th:href="@{/Login}">Already a User.Click Here.. </a>
+            </div>
+
+        </div>
+            </div>
+    </form>
+</body>
+</html>

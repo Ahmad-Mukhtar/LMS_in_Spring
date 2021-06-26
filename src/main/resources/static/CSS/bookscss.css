@@ -1,0 +1,17 @@
+﻿body {
+    background-color:brown;
+}
+.imagecontainer {
+    display:grid;   
+    grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+   
+}
+
+.setimage {
+    padding-top: 15px;
+}
+.setlabel {
+    color: white;
+    font-size: x-large;     
+    margin-left:30px;
+}

@@ -1,0 +1,286 @@
+﻿<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Favourites</title>
+    <meta name="description" content="Librarayproject">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+
+
+
+    <link rel="stylesheet" href="Userstyles/assets/css/normalize.css">
+    <link rel="stylesheet" href="Userstyles/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Userstyles/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Userstyles/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="Userstyles/assets/css/flag-icon.min.css">
+    <link rel="stylesheet" href="Userstyles/assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="Userstyles/assets/scss/style.css">
+    <link href="Userstyles/assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Userstyles/assets/css/bootstrap.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="Userstyles/assets/css/Custom.css" />
+    <link rel="stylesheet" href="CSS/searchbxbtn.css" />
+    <link rel="stylesheet" href="Userstyles/bokscss.css" />
+
+
+</head>
+
+<body class="bg-flat-color-2">
+<!-- Left Panel -->
+
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+
+        <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu"
+                    aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#"><i class="menu-icon fa fa-dashboard fa-4x"></i>User Panel</a>
+                </li>
+                <h3 class="menu-title">Menus</h3>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"><i class="menu-icon fa fa-book"></i>View Books</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-book"></i><a th:href="@{/UserPanel}" >All Books</a></li>
+                        <li><i class="fa fa-ravelry"></i><a  id="act" href="#" onclick="callgenre('Action');">Action</a></li>
+                        <li><i class="fa fa-renren"></i><a href="#" onclick="callgenre('Adventure');">Adventure</a></li>
+                        <li><i class="fa fa-hourglass-2"></i><a href="#" onclick="callgenre('Drama');" >Drama</a></li>
+                        <li><i class="fa fa-superpowers"></i><a href="#" onclick="callgenre('Fantasy');" >Fantasy</a></li>
+                        <li><i class="fa fa-magic"></i><a href="#" onclick="callgenre('Horror');" >Horror</a></li>
+                        <li><i class="fa fa-spinner"></i><a href="#" onclick="callgenre('Fiction');" >Fiction</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a th:href="@{/EditProfile}"><i class="menu-icon fa fa-pencil-square-o"></i>Edit Profile</a>
+
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"><i class="menu-icon fa fa-bookmark-o"></i>Issue Detail</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-bookmark"></i><a th:href="@{/IssuedBooks}">View Issued Books</a></li>
+                        <li><i class="fa fa-search-plus"></i><a th:href="@{/IssueaBook}" >Issue a Book</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"><i class="menu-icon fa fa-university"></i>Reserve Detail</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-hourglass"></i><a th:href="@{/ReservedBooks}">View Reserved Books</a></li>
+                        <li><i class="fa fa-search-plus"></i><a th:href="@{/ReserveaBook}">Reserve a Book</a></li>
+                    </ul>
+                </li>
+
+
+
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"><i class="menu-icon fa fa-sort"></i>Sort Books</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-sort-alpha-asc"></i><a th:href="@{/SortbyAsc}">Sort by Acsending Order</a></li>
+                        <li><i class="fa fa-sort-alpha-desc"></i><a th:href="@{/Sortbydesc}">Sort by Descending Order</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="active">
+                    <a th:href="@{/RenewBook}"><i class="menu-icon fa fa-refresh"></i>Renew Book</a>
+
+                </li>
+
+
+                <li class="active">
+                    <a th:href="@{/returnBook}"><i class="menu-icon fa fa-mail-reply"></i>Return Book</a>
+                </li>
+
+
+                <li class="active">
+                    <a th:href="@{/History}"><i class="menu-icon fa fa-history"></i>History </a>
+                </li>
+
+
+                <li>
+                    <a th:href="@{/Favourites}"><i class="menu-icon fa fa-heart"></i>Favourites </a>
+                </li>
+                <li class="active">
+                    <a th:href="@{/Penalty}"><i class="menu-icon fa fa-warning"></i>Penalty</a>
+
+                </li>
+
+                <li>
+                    <a th:href="@{/Logout}"><i class="menu-icon fa fa-sign-out"></i>Sign out</a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+</aside>
+
+<!-- /#left-panel -->
+
+<!-- Left Panel -->
+
+<!-- Right Panel -->
+
+<div id="right-panel" class="right-panel">
+    <form th:action="@{/Search}" method="post">
+        <div  class="box" style="margin-left:160px;">
+
+            <input class="searchtextbox" style="margin-top:70px;" type="search" placeholder="Search" name="searchbox" />
+            <button class="btnsearch" style="padding-left:5px;" type="submit" name="Search" id="btnlsearch">Search</button>
+
+        </div>
+    </form>
+
+    <!-- Header-->
+    <header id="header" class="header">
+
+        <div class="header-menu">
+
+            <div class="col-sm-7">
+                <button  class="menutoggle" disabled><i class="fa fa fa-tasks" ></i></button>
+
+
+            </div>
+
+            <div class="col-sm-5">
+                <div class="user-area dropdown float-right">
+                    <i style="padding-right:10px;">Hello User</i>
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        <img class="user-avatar rounded-circle" src="Userstyles/images/imj.png" alt="User Avatar">
+                    </a>
+
+                    <div class="user-menu dropdown-menu">
+                        <a th:href="@{/Logout}"><i class="menu-icon fa fa-sign-out"></i>Sign out </a>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+    <!-- /header -->
+    <!-- Header-->
+
+    <div class="content " style="margin-left:145px; margin-top:30px;">
+
+        <div class="col-md-7">
+            <div class="card-custom">
+                <div class="card-body-issue">
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <h4>Favourites</h4>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div>
+                                <table>
+                                    <tr th:each="book, iStat :${FavouriteBooks}" style="display: inline-block;">
+                                        <td>
+                                            <img  class="setimage" th:src="${book.getBookimglink()}" height="200" width="150"/>
+                                            <form  th:action="@{/Favourites}" method="post">
+                                                <input type="hidden"  th:value="${book.getBookid()}" name="favouritebookid">
+                                                    <button  type="submit" class="setfavbtn btn btn-sm">Remove From Favourites</button>
+                                            </form>
+                                        </td>
+                                    <tr/>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div style="margin-left:80px;">
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <
+</div>
+
+
+
+<!-- Right Panel -->
+<script src="Userstyles/assets/js/vendor/jquery-2.1.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+<script src="Userstyles/assets/js/plugins.js"></script>
+<script src="Userstyles/assets/js/main.js"></script>
+
+
+<script src="Userstyles/assets/js/lib/chart-js/Chart.bundle.js"></script>
+<script src="Userstyles/assets/js/dashboard.js"></script>
+<script src="Userstyles/assets/js/widgets.js"></script>
+<script src="Userstyles/assets/js/lib/vector-map/jquery.vmap.js"></script>
+<script src="Userstyles/assets/js/lib/vector-map/jquery.vmap.min.js"></script>
+<script src="Userstyles/assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
+<script src="Userstyles/assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
+<script type="text/javascript">
+        (function ($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
+
+
+
+
+        function callgenre(gen)
+        {
+
+            var d = new Date();
+            d.setTime(d.getTime() + (1 * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            var s = "gencookie";
+            document.cookie = s + "=" + gen + ";" + expires + ";path=/Filter";
+            console.log(document.cookie);
+            window.location.href = "/Filter";
+         }
+
+    </script>
+
+</body>
+</html>

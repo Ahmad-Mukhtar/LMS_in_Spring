@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head runat="server">
+      <link href="CSS/login.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body>
+ <div class="login-page">
+  <div class="form" style="background:#762b00;">
+      <form id="loginfrm" th:action="@{/AdminLogin}" method="post" th:object="${adloginobj}"  class="login-form">
+      <h1 style="color:white">Admin Login</h1>
+        <img src="images/icon.jpg" width="60" height="60" /> 
+        <br />
+        <br />
+          <input type="text" id="txtusrname" required th:field="*{username}" placeholder="Username">
+          <input type="password" id="txtpass" required th:field="*{password}" placeholder="Password">
+          <button class="lgnbtn" type="submit" id="btnforlogin">Login</button>
+          <label style="color:red" th:text="${Errorvalue}"></label>
+      </form>
+      <p class="message"> <a style="color:dodgerblue;" th:href="@{/}">Back to HomePage</a></p>
+  </div>
+</div>
+</body>
+</html>

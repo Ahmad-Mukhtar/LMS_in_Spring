@@ -1,0 +1,86 @@
+﻿body {
+    background-image: url("Login.png");
+    margin: 0;
+    padding: 0;
+    position: center;
+    background-size: cover;
+    font-family: sans-serif;
+}
+
+#form1 {
+    width: 300px;
+    height: 400px;
+    top: 50%;
+    left: 65%;
+    background-color: #0a1629;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding-top: 70px;
+    padding-left: 30px;
+}
+
+h1 {
+    font-size: 25px;
+    color: #0094ff;
+    padding-bottom: 20px;
+    padding-left: 50px;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    border-radius: 50%;
+    top: -40px;
+    left: 37%;
+}
+
+.login P {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #136cbf;
+}
+
+.input1 {
+    padding-top: 10px;
+    width: 80%;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #000;
+    background: transparent;
+    outline: none;
+}
+
+.login-btn {
+    padding-bottom: 30px;
+}
+
+.login input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 30px;
+    color: #ffffff;
+    width: 85%;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 20px;
+    background: #136cbf;
+}
+
+    .login input[type="submit"]:hover {
+        cursor: pointer;
+        background: #b6ff00;
+        color: #000;
+    }
+
+.login a {
+    text-decoration: none;
+    color: #0094ff;
+}
+
+    .login a:hover {
+        background: #b6ff00;
+        color: #000;
+    }

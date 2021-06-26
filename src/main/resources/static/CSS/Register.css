@@ -1,0 +1,132 @@
+﻿body {
+    background: url("../images/bgimage.jpg");
+    margin: 0;
+    padding: 0;
+    position: center;
+    background-size: cover;
+    font-family: sans-serif;
+}
+.img-cont {
+   display:block;
+   text-align:center;
+}
+
+h1 {
+    width: 600px;
+    margin: auto;
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+    border-radius: 15px 15px 0px 0px;
+    color: white;
+}
+.form
+{
+background: #8B4513;
+}
+
+.colorofbtn{
+    color:Highlight;
+}
+ 
+
+#form1 {
+    width: 600px;
+    top: 5%;
+    left: 30%;
+    background-color: rgb(0,0,0,0.3);
+    position: absolute;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.main {
+    padding: 10px;
+}
+
+#section1 {
+    margin-bottom: 40px;
+}
+
+.name {
+    margin-left: 10px;
+    color: white;
+    font-size: 18px;
+}
+
+.section2 {
+    margin-bottom: 40px;
+    margin-left: 10px;
+}
+
+.country {
+    color: white;
+    font-size: 18px;
+}
+
+.gender {
+    margin-left: 108px;
+    color: white;
+    font-size: 18px;
+}
+
+.section3 {
+    margin-left: 300px;
+    color: white;
+    font-size: 18px;
+}
+
+.section4 {
+    margin-left: 10px;
+    color: white;
+    font-size: 18px;
+}
+
+.section5 {
+    margin-left: 100px;
+}
+
+.input1 {
+    border-radius: 50px;
+}
+
+.main input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 30px;
+    color: #ffffff;
+    width: 85%;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 20px;
+    background: #136cbf;
+}
+
+    .main input[type="submit"]:hover {
+        cursor: pointer;
+        background:Highlight;
+        color: #000;
+    }
+
+.Registerbtn
+{
+color: white;
+ background: #1e90ff;
+  width: 100%;
+  border: 0;
+  font-weight: bold;
+  border-radius: 50px;
+ margin: 0 0 35px -45px;
+}
+.Registerbtn:hover {
+        cursor: pointer;
+        color:black;
+    }
+
+
+a {
+    text-decoration: none;
+    color:white;
+}
+
+    a:hover {
+        color: #0094ff;
+    }

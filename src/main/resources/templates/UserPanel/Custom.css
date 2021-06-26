@@ -1,0 +1,14 @@
+﻿.form-control small {
+	color: #e74c3c;
+    
+	visibility: hidden;
+}
+
+.form-control.error small {
+	visibility: visible;
+}
+
+.showfailure {
+    color: #e74c3c;
+    visibility: visible;
+}

@@ -1,0 +1,36 @@
+﻿
+.imagecontainer {
+    display:block;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding-top:100px;   
+}
+
+.setimage {
+    padding-top: 15px;
+    padding-bottom:15px;
+    padding-left:5px;
+}
+.setsearch{
+   float:left;
+    color:white;
+    padding-top:10px;
+}
+
+.setlabel {
+    background-color: #762b00;
+    color: white;
+    font-weight: bold;
+    display: table;
+    font-size: large;
+    margin-left: 25px;
+}
+.setbtn {
+    color: white;
+    background-color: #762b00;
+    font-size: medium;
+    margin-left: 25px;
+    padding-top: 0px;
+    margin-bottom:50px;
+    
+}
+

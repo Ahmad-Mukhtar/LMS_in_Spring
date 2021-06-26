@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Library Managment System</title>
+    
+   <link href="CSS/maincss.css" rel="stylesheet" />
+    <link href="CSS/searchbxbtn.css" rel="stylesheet" />
+    <link href="CSS/cpyofbookcss.css" rel="stylesheet" />
+  <link  href="Bootsrap/Bootstrap-4-4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="Bootsrap/DataTables-1.10.22/css/dataTables.bootstrap4.min.css"  rel="stylesheet"/>
+   
+</head>
+<body>
+
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand fa fa-4x" style="color:white;" th:href="@{/}">
+                    <img src="images/icon.jpg" width="30" height="30" />
+                    E-Library
+                </a>   
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                 <div id="navbarSupportedContent" class="collapse navbar-collapse" >
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a id="hid" class="nav-link" style="color:white;" th:href="@{/}">Home</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" style="color:white;" th:href="@{/Aboutus}">About Us</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" style="color:white;" th:href="@{/Terms}">Terms</a>
+                        </li>
+ 
+                    </ul>
+ 
+                    <ul class="navbar-nav ">
+                        
+                        
+                        <li class="nav-item active">
+                             <a class="nav-link" style="color:white;" th:href="@{/Login}">User Login</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" style="color:white;" th:href="@{/Register}">Register</a>
+                        </li>
+                     
+ 
+                     
+                    </ul>
+                </div>
+ 
+ 
+            </nav>
+        </div>
+        <!-- Main Content Placeholder -->
+        <div>
+            <form th:action="@{/SearchResults}" method="post">
+            <div  class="box">
+
+	    <input class="inputtextbox"  type="text" id="txtSearchMaster" name="searchvalue" placeholder="Search Books">
+		<button type="submit" id="btnSearch" class="serchbtn">Search</button>
+     </div>
+            </form>
+
+    <div id="nores" style="padding-top:100px; margin-left:635px;margin-top:10px;font-size:35px;">
+        <label  class="badge badge-danger" style="margin-top:40px;" th:text="${noResults}"></label>
+    </div>
+
+    <div >
+        <table>
+            <tr th:each="book, iStat :${AllBooks}">
+                <td>
+                    <img class="setimage" th:src="${book.getBookImageLink()}" height="200" width="150"/>
+
+                    <a  style="display: table;" th:href="@{/Login}"><button type="button" class="setbtn btn btn-sm">Issue Book</button></a>
+
+                </td>
+            <tr/>
+
+        </table>
+      
+        </div>
+        </div>
+      
+ 
+         <!-- Footer -->
+        <footer>
+            <div id="footer1" class="container-fluid fixed-bottom">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <p>
+				<a class="footerlinks" id="LinkButton6" th:href="@{/AdminLogin}">Admin Login</a>
+                           
+                            &nbsp;          
+                        </p>
+                    </div>
+                 
+                   
+                </div>
+            </div>
+        </footer>
+        <!-- ./Footer -->
+ 
+
+
+   
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="Bootsrap/Bootstrap-4-4.1.1/js/bootstrap.min.js"></script>
+<script src="Bootsrap/DataTables-1.10.22/js/dataTables.bootstrap4.min.js"></script>
+</body>
+</html>
