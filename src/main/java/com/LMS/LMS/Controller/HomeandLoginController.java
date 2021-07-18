@@ -19,8 +19,11 @@ public class HomeandLoginController
     //Show Homepage and load books from database and Display it
     @GetMapping("/")
     public String showHome(Model model) throws SQLException {
+
         books=new Books("#");
+
         model.addAttribute("AllBooks",books.getBooksArrayList());
+
         return "Homepage";
     }
 
@@ -68,7 +71,9 @@ public class HomeandLoginController
     @GetMapping("/Login")
     public String showLogin(Model model) throws SQLException {
         model.addAttribute("loginobj",new Login());
-        model.addAttribute("Errorvalue",new String());
+
+        model.addAttribute("Errorvalue", "");
+
         return "Login";
     }
 
@@ -104,7 +109,9 @@ public class HomeandLoginController
             else
             {
                 String nores="No Results Found";
+
                 model.addAttribute("noResults",nores);
+
                 return "Homepage";
             }
     }
@@ -115,7 +122,9 @@ public class HomeandLoginController
         ArrayList<Books> SearchResults=new ArrayList<>();
 
         for (Books b:books.getBooksArrayList()) {
+
             Books books=new Books(b);
+
             if (books.getBookname().contains(Searchvalue))
             {
                 SearchResults.add(books);

@@ -17,6 +17,7 @@ public class Admin
     private Books books;
 
 
+    //Constuctor get all the info Related to admin
     public Admin(String adminname) throws SQLException
     {
         iAdmin=DataAccessFactory.getAdmindal();
@@ -34,11 +35,13 @@ public class Admin
         Adminname = adminname;
     }
 
+    //Get all the Books
     public ArrayList<Books> getAllBooks()
     {
         return books.getBooksArrayList();
     }
 
+    //Search The Required Book
     public ArrayList<Books> getsearchResults(String Searchvalue)
     {
         ArrayList<Books> SearchResults=new ArrayList<>();
@@ -54,26 +57,14 @@ public class Admin
         return SearchResults;
     }
 
-    public ArrayList<Books> filterbyGenre(String Filtervalue) {
-        ArrayList<Books> FilterResults=new ArrayList<>();
-
-        for (Books b:books.getBooksArrayList()) {
-            Books books=new Books(b);
-            if (books.getGenre().equals(Filtervalue))
-            {
-                FilterResults.add(books);
-            }
-
-        }
-        return FilterResults;
-    }
-
+    //Update Profile
     public boolean UpdateProfile(String Password) throws SQLException {
         return iAdmin.changePassword(Adminname,Password);
     }
-
+    //Add Book
     public boolean AddBooks(int Bookid,String Bookname,String BookDescription,String Bookimglink,String Genre,int CurrentStock,String Authorname,String Publishername) throws SQLException {
 
+        //If Book id is Unque then add it
         if(!books.checkbook(Bookid)) {
 
              if (iAdmin.addBook(Bookid, Bookname, BookDescription, Bookimglink, Genre, CurrentStock, Authorname, Publishername)) {
@@ -97,16 +88,17 @@ public class Admin
              return false;
          }
     }
-
+    //Delete the  Book
     public boolean DeleteBook(int Bookid) throws SQLException {
         if(books.checkbook(Bookid))
         {
+            //Remove the Book and Delete its image file
             if (iAdmin.removeBook(Bookid))
             {
                 for (int i = 0; i < books.getBooksArrayList().size(); i++) {
                     if (books.getBooksArrayList().get(i).getId() == Bookid) {
 
-                        File F = new File(books.getBooksArrayList().get(i).getBookImageLink());
+                        File F = new File("src/main/webapp/"+books.getBooksArrayList().get(i).getBookImageLink());
                         if(F.exists())
                         {
                             F.delete();
@@ -129,10 +121,13 @@ public class Admin
         }
     }
 
+    //Update  a Book
     public boolean UpdateBooks(int Bookid,String Bookname,String BookDescription,String Bookimglink,String Genre,int CurrentStock,String Authorname,String Publishername) throws SQLException {
+        //if Book Exists
         if(books.checkbook(Bookid)) {
 
             Books b=books.getbook(Bookid);
+            //set Current Valus to the Previous values Which are empty
             if (Bookname.isEmpty())
             {
                 Bookname=b.getBookname();
@@ -188,6 +183,7 @@ public class Admin
         }
     }
 
+    //Get a Single Book By its Id
     public Books getBook(int Bookid)
     {
         return books.getbook(Bookid);

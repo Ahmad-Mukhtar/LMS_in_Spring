@@ -23,6 +23,7 @@ public class ReserveBook
 
     private ArrayList<ReserveBook> ReservedBooks;
 
+    //Getters and Setters
     public ArrayList<ReserveBook> getReservedBooks() {
         return ReservedBooks;
     }
@@ -102,6 +103,7 @@ public class ReserveBook
         this.DueDate=Duedate;
     }
 
+    //Reserve the Book and Store Record in Database
     public boolean ReserveABook(int bookid,String username) throws SQLException {
 
         Date currentDate = new Date();
@@ -113,7 +115,9 @@ public class ReserveBook
         return reserveBooks.reserveBook(bookid,username,currentDate.toString(),c.getTime().toString());
     }
 
+    //Return the Reserved Book
     public boolean returnReservedBook(int BOOKID,String USERNAME) throws SQLException {
+
         if (reserveBooks.removereservedbook(USERNAME,BOOKID))
         {
             for (int i = 0; i <ReservedBooks.size() ; i++)
@@ -135,6 +139,7 @@ public class ReserveBook
         }
     }
 
+    //Check if the Book is Reserved or Not
     public boolean checkReservedBook(int Bookid)
     {
         for (ReserveBook r:ReservedBooks) {
@@ -146,6 +151,7 @@ public class ReserveBook
         return false;
     }
 
+    //Remove the Reserved Book if tHe due date Exceeds
     public void autoRemoveReservedBook() throws ParseException {
 
         SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy");

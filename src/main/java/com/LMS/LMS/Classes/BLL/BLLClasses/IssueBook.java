@@ -32,13 +32,14 @@ public class IssueBook
 
  private IBookissue bookissue;
 
-
+    //Get all the Issued Books
     public IssueBook(String usn) throws SQLException {
         bookissue=DataAccessFactory.getIssueBookDal();
         this.Username=usn;
         IssuedBooks=bookissue.getIssuedBooks(usn);
     }
 
+    //Getters and Setters
     public int getBookid() {
         return Bookid;
     }
@@ -99,6 +100,7 @@ public class IssueBook
         this.DueDate=Duedate;
     }
 
+    //Issue A bOOk for 10 Days and Store the Record in Database
     public boolean IssueABook(int bookid,String username) throws SQLException {
 
      Date currentDate = new Date();
@@ -110,15 +112,18 @@ public class IssueBook
      return bookissue.issueBook(bookid,username,currentDate.toString(),c.getTime().toString());
  }
 
+    //Renew the Book
     boolean RenewBook(int Bookid,String Username,String issuedate,String Duedate) throws SQLException
     {
         return bookissue.RenewBook(Bookid,Username,issuedate,Duedate);
     }
 
+   // Return the Book
     public boolean ReturnBook(int Bookid,String Username) throws SQLException {
         return bookissue.ReturnBook(Bookid,Username);
     }
 
+    //Check if the given Book  is Issued or Not
     public boolean checkIssuedbook(int bookid)
     {
         for (IssueBook issuedBook : IssuedBooks) {
@@ -129,6 +134,7 @@ public class IssueBook
         return true;
     }
 
+    //Calculate NoofDays Passed after the Book's DUe Date is Exceeded
     public int getdaysafterdue() throws ParseException {
 
         int noofdays=0;

@@ -20,7 +20,13 @@ public class UserController {
     public String showUserPanel(Model model, HttpSession httpSession) throws SQLException, ParseException {
         if(user==null)
         {
-            user=new User(httpSession.getAttribute("username").toString());
+            if (httpSession.getAttribute("username")!=null) {
+                user = new User(httpSession.getAttribute("username").toString());
+            }
+            else
+            {
+                return "redirect:/Login";
+            }
         }
 
         if(httpSession.getAttribute("username")!=null) {
@@ -660,6 +666,7 @@ public class UserController {
                 penaltymessage="No Penalty to Pay";
             }
             model.addAttribute("penmssg",penaltymessage);
+
             return "UserPanel/Penalty";
         }
         else
@@ -670,9 +677,11 @@ public class UserController {
 
     //Read the Book By Given ID
     @PostMapping("/ReadBook")
-    public void readBook(@RequestParam("readbookid") int Bookid ,Model model, HttpSession httpSession, HttpServletResponse response) throws IOException {
+    public String readBook(@RequestParam("readbookid") int Bookid ,Model model, HttpSession httpSession, HttpServletResponse response) throws IOException {
+
         if(httpSession.getAttribute("username")!=null)
         {
+
             String pathtopdf="src/Books/"+Bookid+".pdf";
             String filename=Bookid+".pdf";
             response.setContentType("application/pdf");
@@ -686,9 +695,14 @@ public class UserController {
             }
             else
             {
-                return;
+                model.addAttribute("statusmssg","Http Error Code: 404");
+
+                model.addAttribute("errormssg","Message: Resource not found");
+
+                return "error";
             }
         }
+        return "";
     }
 
     //Sign Out User by removing the Session Id and Setting User to null

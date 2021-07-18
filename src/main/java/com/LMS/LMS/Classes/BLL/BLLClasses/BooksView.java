@@ -7,6 +7,7 @@ public class BooksView
     String Bookid;
 
 
+
     public String getBookid() {
         return Bookid;
     }

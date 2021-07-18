@@ -12,6 +12,7 @@ public class UpdateProfile
     private String FirstName;
     private String LastName;
 
+    //Getters and Setters
     public void setFirstName(String firstName) {
         FirstName = firstName;
     }
@@ -56,10 +57,12 @@ public class UpdateProfile
         return Dob;
     }
 
+    //Get the Profile Info From DataBase
     public UpdateProfile() throws SQLException {
         updateProfile=DataAccessFactory.getProfileUpdateDal();
     }
 
+    //Update the Profile
     public Boolean updateProfile(String Firstname, String Lastname, String Password, String Email, String Dob,String username) throws SQLException {
 
         return updateProfile.updateProfile(Firstname,Lastname,Password,Email,Dob,username);

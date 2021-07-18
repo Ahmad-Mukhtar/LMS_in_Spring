@@ -16,6 +16,7 @@ public class Favourites
 
     private IFavourites favourites;
 
+    //Constuctor Load all the Books Which are Favourited
     public Favourites(String username) throws SQLException {
 
         favourites=DataAccessFactory.getFavouritesDal();
@@ -29,6 +30,7 @@ public class Favourites
         this.Bookid=bookid;
     }
 
+    //Getters and Setters
     public ArrayList<Favourites> getFavouriteBooks() {
         return FavouriteBooks;
     }
@@ -53,30 +55,49 @@ public class Favourites
         Bookid = bookid;
     }
 
+    //Add to Favourite
     boolean addtoFavouries(int Bookid,String Username) throws SQLException {
 
 
-        FavouriteBooks.add(new Favourites(Bookid,Username));
-        return favourites.addToFavourites(Bookid,Username);
+        try {
+            FavouriteBooks.add(new Favourites(Bookid,Username));
+            return favourites.addToFavourites(Bookid,Username);
+        }
+        catch (Exception exception)
+        {
+            System.out.println(exception.toString());
+        }
+
+        return false;
+
     }
 
+    //Remove From Favourites
     boolean removeFromFavourites(int bookid,String UserName) throws SQLException
     {
 
-        for (int i = 0; i <FavouriteBooks.size() ; i++)
-        {
+        try {
 
-            if(FavouriteBooks.get(i).getBookid()==bookid)
-            {
+            for (int i = 0; i < FavouriteBooks.size(); i++) {
 
-                FavouriteBooks.remove(i);
-                break;
+                if (FavouriteBooks.get(i).getBookid() == bookid) {
+
+                    FavouriteBooks.remove(i);
+                    break;
+                }
+
             }
-
+            return favourites.removeFromFavourites(bookid, UserName);
         }
-        return favourites.removeFromFavourites(bookid,UserName);
+        catch (Exception e)
+        {
+            System.out.println(e.toString());
+        }
+
+        return false;
     }
 
+    //Check if peacfic book id exist in Favourite
     public boolean checkFavouriteBook(int bookid)
     {
         for (Favourites f:FavouriteBooks) {

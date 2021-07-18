@@ -7,6 +7,7 @@ import com.LMS.LMS.Classes.DAL.DAL;
 
 import java.sql.SQLException;
 
+//Factory Class for Accessing the DAL
 public class DataAccessFactory
 {
     public static ILogin getLogindal() throws SQLException {

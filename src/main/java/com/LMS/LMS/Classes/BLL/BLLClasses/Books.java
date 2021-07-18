@@ -29,18 +29,27 @@ public class Books
 
     private ArrayList<Books> booksArrayList;
 
-    public Books() throws SQLException {
+    public Books() {
 
     }
 
+    //Get all the Books From database and store it in List
     public Books(String username) throws SQLException {
 
-        books=DataAccessFactory.getBookDal();
+        try {
+            books=DataAccessFactory.getBookDal();
 
-        this.booksArrayList=books.getBooks();
+            this.booksArrayList=books.getBooks();
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.toString());
+        }
+
 
     }
 
+    //Copy Constructor
     public Books(Books books)
     {
         this.id=books.id;
@@ -57,6 +66,7 @@ public class Books
         return booksArrayList;
     }
 
+    //Setters
     public void setId(int id) {
         this.id = id;
     }
@@ -89,6 +99,7 @@ public class Books
         Publishername = publishername;
     }
 
+    //Getters
     public int getId() {
         return id;
     }
@@ -121,6 +132,7 @@ public class Books
         return Publishername;
     }
 
+    //Get Speacific Book Stock
     public boolean getBookStock(int bookid)
     {
         for (Books books :booksArrayList ) {
@@ -132,6 +144,7 @@ public class Books
         return true;
     }
 
+    //Check if Book id is valid
     public boolean checkbook(int bookid)
     {
         for (int i=0;i<booksArrayList.size();i++)
@@ -144,6 +157,7 @@ public class Books
         return false;
     }
 
+    //Get a single book
     public Books getbook(int bookid)
     {
         for (int i=0;i<booksArrayList.size();i++)

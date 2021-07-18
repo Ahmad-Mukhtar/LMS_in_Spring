@@ -15,6 +15,7 @@ public class History
 
     private IHistory iHistory;
 
+    //Get All the Hisory Books
     public History(String username) throws SQLException
     {
         iHistory=DataAccessFactory.getHistoryBookDal();
@@ -28,6 +29,8 @@ public class History
 
         this.Username=un;
     }
+
+    //Setters and Getters
 
     public ArrayList<History> getHistoryBooks() {
         return HistoryBooks;
@@ -53,6 +56,7 @@ public class History
         Username = username;
     }
 
+    //Add the Book to History which was Issued and Returned
     public boolean AddtoHistory(int Bookid,String Username) throws SQLException {
 
         return iHistory.AddtoHistory(Bookid,Username);

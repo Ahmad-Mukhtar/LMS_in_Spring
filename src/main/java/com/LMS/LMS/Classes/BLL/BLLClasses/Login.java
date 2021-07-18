@@ -13,7 +13,7 @@ public class Login
 
     private String password;
 
-
+    //Getter Setters
     public String getUsername() {
         return username;
     }
@@ -34,6 +34,7 @@ public class Login
     {
         login=DataAccessFactory.getLogindal();
     }
+    //Validate from Database if The Credentials are Correct and then Login
     public boolean Login(String Username, String Password,String usertype) throws SQLException {
 
         return login.validateLogin(Username,Password,usertype);

@@ -110,7 +110,7 @@ public class AdminController
         if(httpSession.getAttribute("admin")!=null) {
 
             String path="src/Images/";
-            String savepath="src/main/resources/static/"+path;
+            String savepath="src/main/webapp/"+path;
             path=path+bookimg.getOriginalFilename();
             books.setBookImageLink(path);
 

@@ -12,11 +12,13 @@ public class Penalty
 
     private IPenalty iPenalty;
 
+    //Get the Penalty Value From DataBase
     public Penalty(String Username) throws SQLException {
         iPenalty=DataAccessFactory.getPenaltydal();
         this.price=iPenalty.getPenalty(Username);
     }
 
+    //Getters and Setters
     public int getPrice() {
         return price;
     }
@@ -33,6 +35,7 @@ public class Penalty
         this.username = username;
     }
 
+    //Calculate the Price For Penlaty ie 10 RS per day and Store it in db
     public boolean SetPenalty(int noofdays,String Username) throws SQLException {
 
             int penanltyprice = noofdays * 10;

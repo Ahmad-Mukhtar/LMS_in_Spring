@@ -18,18 +18,41 @@ public class Register
     private IRegisterUser IRegisterUser;
 
     public Register() throws SQLException {
-        IRegisterUser =DataAccessFactory.getRegisterDal();
+        try {
+            IRegisterUser =DataAccessFactory.getRegisterDal();
+        }
+        catch (Exception exception)
+        {
+            System.out.println(exception.toString());
+        }
+
     }
 
+    //Register the User
     public Boolean registerUser(String Password,String Dob,String Email,String Firstname,String Lastname,String Username,String Gender) throws SQLException {
-        return  IRegisterUser.registerUser(Password,Dob,Email,Firstname,Lastname,Username,Gender);
+       try {
+           return  IRegisterUser.registerUser(Password,Dob,Email,Firstname,Lastname,Username,Gender);
+       }
+       catch (Exception exception)
+       {
+           System.out.println(exception.toString());
+       }
+       return false;
     }
 
+    //Check if Current Username Exists or Not
     public Boolean checkusername(String Username) throws SQLException
     {
-        return  IRegisterUser.checkUsername(Username);
+        try {
+            return IRegisterUser.checkUsername(Username);
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return false;
     }
 
+    //Getters and Setters
     public String getFirstName() {
         return FirstName;
     }
